@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  LocationVC.swift
 //  DevBootcamps
 //
 //  Created by William L. Marr III on 4/20/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class LocationVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
