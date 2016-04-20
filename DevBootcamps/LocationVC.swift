@@ -14,6 +14,8 @@ class LocationVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,12 +23,23 @@ class LocationVC: UIViewController {
         tableView.delegate = self
         mapView.delegate = self
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        locationAuthStatus()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func locationAuthStatus() {
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            mapView.showsUserLocation = true
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
 
 }
 
