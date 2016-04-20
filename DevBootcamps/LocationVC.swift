@@ -17,12 +17,24 @@ class LocationVC: UIViewController {
     let locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
     
+    // Test addresses - remove when done.
+    let addresses = [
+        "3868 Center Road, Brunswick, OH 44212",        // Dunkin' Donuts
+        "3675 Center Road, Brunswick, OH 44212",        // Valvoline Instant Oil Change
+        "3521 Center Road, Brunswick Hills, OH 44212"   // Arby's
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
         mapView.delegate = self
+        
+        // Test code using test addresses - remove when done
+        for address in addresses {
+            getPlacemarkFromAddress(address)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,6 +51,25 @@ class LocationVC: UIViewController {
             mapView.showsUserLocation = true
         } else {
             locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func createAnnotationForLocation(location: CLLocation) {
+        let bootcamp = BootcampAnnotation(coordinate: location.coordinate)
+        
+        mapView.addAnnotation(bootcamp)
+    }
+    
+    func getPlacemarkFromAddress(address: String) {
+        CLGeocoder().geocodeAddressString(address) { (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+            
+            if let marks = placemarks where marks.count > 0 {
+                if let location = marks[0].location {
+                    
+                    // We have a valid location with coordinates
+                    self.createAnnotationForLocation(location)
+                }
+            }
         }
     }
 }
