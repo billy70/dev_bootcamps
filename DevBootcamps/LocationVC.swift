@@ -110,4 +110,22 @@ extension LocationVC: MKMapViewDelegate {
             centerMapOnLocation(location)
         }
     }
+
+    // Use this delegate method to customize the annotations.
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation.isKindOfClass(BootcampAnnotation) {
+            
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Default")
+            annotationView.pinTintColor = UIColor.purpleColor()
+            annotationView.animatesDrop = true
+            
+            return annotationView
+            
+        } else if annotation.isKindOfClass(MKUserLocation) {    // this is the user location - never change it's properties!
+            return nil
+        }
+        
+        return nil
+    }
 }
