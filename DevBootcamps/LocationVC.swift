@@ -15,6 +15,7 @@ class LocationVC: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
+    let regionRadius: CLLocationDistance = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,6 @@ class LocationVC: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
     }
-
 }
 
 
@@ -68,4 +68,15 @@ extension LocationVC: UITableViewDelegate {
 
 extension LocationVC: MKMapViewDelegate {
     
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2, regionRadius * 2)
+        
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        if let location = userLocation.location {
+            centerMapOnLocation(location)
+        }
+    }
 }
