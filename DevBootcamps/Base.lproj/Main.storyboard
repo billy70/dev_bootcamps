@@ -57,29 +57,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="209.5" height="41.5"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sfH-rJ-uwo">
+                                <rect key="frame" x="0.0" y="28" width="600" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215" id="rIs-OF-fF3"/>
+                                </constraints>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ziv-8C-CBV">
+                                <rect key="frame" x="0.0" y="243" width="600" height="308"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="192" y="329" width="215.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="ziv-8C-CBV" firstAttribute="top" secondItem="sfH-rJ-uwo" secondAttribute="bottom" id="2An-HB-r4I"/>
+                            <constraint firstAttribute="trailing" secondItem="ziv-8C-CBV" secondAttribute="trailing" id="EJx-xa-YjL"/>
+                            <constraint firstItem="sfH-rJ-uwo" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="OVj-7T-duT"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="ziv-8C-CBV" secondAttribute="bottom" id="Vzt-1t-aFk"/>
+                            <constraint firstItem="sfH-rJ-uwo" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="hTB-fe-sUJ"/>
+                            <constraint firstAttribute="trailing" secondItem="sfH-rJ-uwo" secondAttribute="trailing" id="nkc-38-Uy7"/>
+                            <constraint firstItem="ziv-8C-CBV" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="qBP-xW-LSg"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="mapView" destination="sfH-rJ-uwo" id="GAq-OU-GhD"/>
+                        <outlet property="tableView" destination="ziv-8C-CBV" id="Kcq-VQ-f64"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
